@@ -16,7 +16,7 @@ export const printAddress = ({ name, address: { street, number, city, country } 
 // REFACTOR CHALLENGE
 // Refactor this function so that all values in the object are destructured
 // as part of the funciton definitions (i.e. there should be no dots in the template literals)
-export const printUserInfo = (user) => {
+export const printUserInfo = ({ username:{ username }, name:{ first, last }, info:{ favorite: color, food }, pet:{ name }, address:{ number, street, city, country } }) => {
   return `
     Username: ${user.username},
     Full Name: ${user.name.first} ${user.name.last},
@@ -32,14 +32,18 @@ export const printUserInfo = (user) => {
 // REQS: use rest parameters
 //  getSum(1, 2, 3) === 6
 //  getSum(1, 2, 3, 4, 5) === 15
-export const getSum = () => {}
+export const getSum = (...numbers) => {
+  return numbers.reduce((accum, elem) => accum += elem, 0)
+}
 
 // INPUT: an unknown number of arguments
 // OUTPUT: an array with the first two arguments destructured and the remaining in a nested array
 // REQS: use rest parameters
 // getFirstTwoArgs(1, 2, 3, 4, 5) should return [1, 2, [3, 4, 5]]
 // getFirstTwoArgs('a', 'b', 'c', 'd') should return ['a', 'b', ['c', 'd']]
-export const getFirstTwoArgs = () => {}
+export const getFirstTwoArgs = (thing1, thing2, ...rest) => {
+  return [thing1, thing2, rest]
+}
 
 // INPUT: an object with the following structure
 // {
@@ -62,7 +66,9 @@ export const getFirstTwoArgs = () => {}
 //    return a NEW object, do not modify the object passed in to the function
 //    use spread operator to create a new object
 
-export const addSneakerCount = () => {}
+export const addSneakerCount = ({ shoe, ...rest }) => {
+  return { ...rest, shoe, totalShoes: shoe.length }
+}
 
 // INPUT: brands from data.js
 // OUTPUT: the brand names listed
