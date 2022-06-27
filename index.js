@@ -16,14 +16,15 @@ export const printAddress = ({ name, address: { street, number, city, country } 
 // REFACTOR CHALLENGE
 // Refactor this function so that all values in the object are destructured
 // as part of the funciton definitions (i.e. there should be no dots in the template literals)
-export const printUserInfo = ({ username:{ username }, name:{ first, last }, info:{ favorite: color, food }, pet:{ name }, address:{ number, street, city, country } }) => {
+export const printUserInfo = ({ username, name: { first, last }, info: { favorites: { color, food }, pet: { name }, address: { country, street, city, number } } }) => {
+  
   return `
-    Username: ${user.username},
-    Full Name: ${user.name.first} ${user.name.last},
-    Favorite Color: ${user.info.favorites.color},
-    Favorite Food: ${user.info.favorites.food},
-    Pet Name: ${user.info.pet.name},
-    Address: ${user.info.address.number} ${user.info.address.street}, ${user.info.address.city}, ${user.info.address.country}
+    Username: ${username},
+    Full Name: ${first} ${last},
+    Favorite Color: ${color},
+    Favorite Food: ${food},
+    Pet Name: ${name},
+    Address: ${number} ${street}, ${city}, ${country}
     `
 }
 
@@ -91,6 +92,8 @@ export const totalSneakerCount = (data) => {
 // convertToArray({}) => []
 // Source: https://edabit.com/challenge/pPNAs5PvB3WvnDwDM
 
-export const convertToArray = () => {}
+export const convertToArray = (thing) => {
+  return Object.keys(thing).map((key) =>[key, thing[key]])
+}
 
 //

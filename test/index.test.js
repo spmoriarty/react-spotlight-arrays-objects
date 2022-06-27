@@ -23,7 +23,7 @@ test('printAddress should return a formatted string', () => {
   expect(printAddress(input)).toBe('Bob Smith lives at 123 Main Street, Anytown, USA')
 })
 
-test.skip('printUserInfo should return a formatted string', () => {
+test('printUserInfo should return a formatted string', () => {
   const user = {
     username: 'bobloblaw',
     name: {
@@ -75,7 +75,7 @@ test('totalSneakerCount should return total number of sneakers', () => {
   expect(totalSneakerCount(brands)).toBe(14)
 })
 
-test.skip('convertToArray should convert Object key, value pairs to arrays', () => {
+test('convertToArray should convert Object key, value pairs to arrays', () => {
   expect(convertToArray({ a: 1, b: 2, c: 3 })).toStrictEqual([
     ['a', 1],
     ['b', 2],
